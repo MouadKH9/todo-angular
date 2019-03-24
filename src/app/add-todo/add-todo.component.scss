@@ -1,0 +1,16 @@
+.add-todo {
+  margin-bottom: 20px;
+
+  input {
+    border-radius: 0;
+  }
+
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  button:disabled {
+    background: rgb(201, 201, 201);
+    border-color: rgb(201, 201, 201);
+  }
+}
