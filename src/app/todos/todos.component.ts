@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { TodosService } from "../todos.service";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { ApiService } from "../api.service";
 
 @Component({
   selector: "todos",
@@ -7,13 +7,22 @@ import { TodosService } from "../todos.service";
   styleUrls: ["./todos.component.scss"]
 })
 export class TodosComponent {
-  todos: Array<Object>;
-  service: TodosService;
-  todoDone(id: Number) {
-    this.service.doneTodo(id);
-  }
-  constructor(service: TodosService) {
+  todos: any;
+  @Output() refreshTodos = new EventEmitter();
+  service: ApiService;
+  constructor(service: ApiService) {
     this.service = service;
-    this.todos = service.getTodos();
+    this.refresh();
+  }
+  refresh() {
+    console.log("Refreshing...");
+    this.service.getTodos().subscribe(data => (this.todos = data));
+  }
+  todoDone(id: number) {
+    console.log("Done..");
+
+    this.service.doneTodo(id).subscribe(res => {
+      this.refreshTodos.emit();
+    });
   }
 }

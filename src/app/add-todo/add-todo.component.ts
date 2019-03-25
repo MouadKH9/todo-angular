@@ -1,4 +1,4 @@
-import { TodosService } from "./../todos.service";
+import { ApiService } from "../api.service";
 import { Component } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
@@ -8,11 +8,11 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ["./add-todo.component.scss"]
 })
 export class AddTodoComponent {
-  service: TodosService;
+  service: ApiService;
   form = new FormGroup({
     todo: new FormControl("", Validators.required)
   });
-  constructor(service: TodosService) {
+  constructor(service: ApiService) {
     this.service = service;
   }
   add() {
