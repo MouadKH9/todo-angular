@@ -1,5 +1,5 @@
 import { TodosService } from "./../todos.service";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
