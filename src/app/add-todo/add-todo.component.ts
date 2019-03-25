@@ -19,5 +19,6 @@ export class AddTodoComponent {
     let value = this.form.get("todo").value;
     console.log(`Adding ${value}`);
     this.service.addTodo({ text: value });
+    this.form.patchValue({ todo: "" });
   }
 }
