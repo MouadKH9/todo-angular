@@ -20,9 +20,8 @@ export class TodosComponent {
   }
   todoDone(id: number) {
     console.log("Done..");
-
     this.service.doneTodo(id).subscribe(res => {
-      this.refreshTodos.emit();
+      this.refreshTodos.emit(res);
     });
   }
 }

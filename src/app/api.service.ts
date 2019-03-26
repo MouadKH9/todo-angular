@@ -24,5 +24,7 @@ export class ApiService {
     return this.http.put<Todo>(this.apiUrl + "done/" + id, null);
   }
 
-  addTodo(todo: Todo) {}
+  addTodo(todo: Todo) {
+    return this.http.post(this.apiUrl + "add", todo);
+  }
 }
