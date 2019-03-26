@@ -1,7 +1,5 @@
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let todo of todos ">
-    <div class="todo text-center" [class.done]="todo.done" (click)="todoDone(todo.id)">
-      {{ todo.text }}
-    </div>
+    <todo (clicked)="todoDone($event)" [text]="todo.text" [done]="todo.done" [id]="todo.id"></todo>
   </li>
 </ul>
