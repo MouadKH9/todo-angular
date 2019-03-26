@@ -27,4 +27,10 @@ export class ApiService {
   addTodo(todo: Todo) {
     return this.http.post(this.apiUrl + "add", todo);
   }
+  deleteTodo(id: number) {
+    return this.http.delete(this.apiUrl + "delete/" + id);
+  }
+  editTodo(id: number, val: string) {
+    return this.http.put(this.apiUrl + "edit/" + id, { text: val });
+  }
 }

@@ -15,6 +15,8 @@ import { TodoComponent } from "./todos/todo/todo.component";
 
 import { MaterialModule } from "./material.module";
 
+import { ToastrModule } from "ngx-toastr";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,12 @@ import { MaterialModule } from "./material.module";
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: "toast-bottom-center",
+      preventDuplicates: true
+    })
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

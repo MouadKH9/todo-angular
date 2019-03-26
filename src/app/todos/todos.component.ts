@@ -8,20 +8,20 @@ import { ApiService } from "../api.service";
 })
 export class TodosComponent {
   todos: any;
-  @Output() refreshTodos = new EventEmitter();
+  @Output() refresh = new EventEmitter();
   service: ApiService;
   constructor(service: ApiService) {
     this.service = service;
-    this.refresh();
+    this.Refresh();
   }
-  refresh() {
+  Refresh() {
     console.log("Refreshing...");
     this.service.getTodos().subscribe(data => (this.todos = data));
   }
   todoDone(id: number) {
     console.log("Done..");
     this.service.doneTodo(id).subscribe(res => {
-      this.refreshTodos.emit(res);
+      this.refresh.emit(res);
     });
   }
 }

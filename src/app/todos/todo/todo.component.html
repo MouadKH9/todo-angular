@@ -1,8 +1,18 @@
 <div class="todo row">
-  <div class="col-md-11 col-sm-11" [class.done]="done" (click)="clicked.emit(id)">
-    {{ text }}
+  <div class="col-md-10 col-sm-9">
+    <div [hidden]="editMode" class="w-100" [class.done]="done" (click)="clicked.emit(id)">
+      {{ text }}
+    </div>
+    <mat-form-field [hidden]="!editMode" class="example-full-width">
+      <input matInput [(ngModel)]="editVal">
+    </mat-form-field>
   </div>
-  <div class="col-md-1 col-sm-1">
-    <mat-icon>create</mat-icon>
+  <div [hidden]="editMode" class="col-md-2 col-sm-3">
+    <mat-icon (click)="enterEditMode(text)">create</mat-icon>
+    <mat-icon (click)="delete(id)" class="text-danger">delete</mat-icon>
+  </div>
+  <div [hidden]="!editMode">
+    <mat-icon (click)="confirmEdit(id)" style="font-size: 2em;margin-top: 50%;" class="text-success">check
+    </mat-icon>
   </div>
 </div>
